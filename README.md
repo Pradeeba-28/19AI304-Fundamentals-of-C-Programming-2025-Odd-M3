@@ -4,7 +4,7 @@
 ## 6. Implementation of string manipulation.
 # Ex.No:11
   Formulate a C program to convert a given decimal number into its binary equivalent and display it.
-# Date : 
+# Date : 12-05-2026
 # Aim:
 To formulate a C program to convert a decimal number into its binary equivalent and display it.
 # Algorithm:
@@ -28,7 +28,22 @@ To formulate a C program to convert a decimal number into its binary equivalent 
 ### Step 8: 
    Stop
 # Program:
+```python
+#include <stdio.h>
+int main() {
+    int n;
+    printf("Enter a decimal number: ");
+    scanf("%d", &n);
+    if (n == 0) { printf("0"); return 0; }
+    int bin[32], i = 0;
+    while (n > 0) { bin[i++] = n % 2; n /= 2; }
+    for (i--; i >= 0; i--) printf("%d", bin[i]);
+    return 0;
+}
+```
 # Output:
+<img width="289" height="53" alt="image" src="https://github.com/user-attachments/assets/85e2e704-4f48-4c18-8568-f4896b692c7a" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -67,7 +82,35 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 9: 
   Stop
 # Program:
+```python
+#include <stdio.h>
+int main() {
+    int m,i,j,k,flag=0;
+    printf("Enter order: ");
+    scanf("%d",&m);
+    int a[m][m];
+    for(i=0;i<m;i++)
+        for(j=0;j<m;j++)
+            scanf("%d",&a[i][j]);
+
+    for(i=0;i<m;i++) {
+        int min=a[i][0], col=0;
+        for(j=1;j<m;j++) if(a[i][j]<min){ min=a[i][j]; col=j; }
+        int max=a[0][col];
+        for(k=1;k<m;k++) if(a[k][col]>max) max=a[k][col];
+        if(min==max) {
+            printf("Saddle point at (%d,%d) = %d\n",i,col,min);
+            flag=1;
+        }
+    }
+    if(!flag) printf("No saddle point\n");
+    return 0;
+}
+
+```
 # Output:
+<img width="279" height="138" alt="image" src="https://github.com/user-attachments/assets/8ca8c6a9-3fa9-4caa-8da2-86909e6a9afb" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -101,7 +144,22 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10: 
   Stop
 # Program:
+```python
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char s[100];
+    printf("Enter a string: ");
+    scanf("%[^\n]s", s);
+    for (int i = strlen(s)-1; i >= 0; i--)
+        printf("%c", s[i]);
+    return 0;
+}
+```
 # Output:
+<img width="232" height="61" alt="image" src="https://github.com/user-attachments/assets/0c08a8a3-eb12-470a-ac7e-444ea4c66454" />
+
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -135,7 +193,37 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 8:
   Stop
 # Program:
+```python
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char s[100];
+    int visited[256] = {0}, i, j, n, count;
+
+    printf("Enter a string: ");
+    scanf("%[^\n]", s);
+
+    n = strlen(s);
+
+    for (i = 0; i < n; i++) {
+        if (!visited[(unsigned char)s[i]]) {
+            count = 0;
+            for (j = 0; j < n; j++) {
+                if (s[i] == s[j]) count++;
+            }
+            printf("'%c' occurs %d times\n", s[i], count);
+            visited[(unsigned char)s[i]] = 1;
+        }
+    }
+
+    return 0;
+}
+
+```
 # Output:
+<img width="237" height="141" alt="image" src="https://github.com/user-attachments/assets/e5681fa9-6928-4c0b-82a3-1726b7616807" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -169,7 +257,23 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 8: 
   Stop
 # Program:
+```python
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char str[200], words[50][50]; int n=0,i,j;
+    printf("Enter a string: ");
+    scanf("%[^\n]s", str);
+    char *p=strtok(str," ");
+    while(p){ strcpy(words[n++],p); p=strtok(NULL," "); }
+    for(i=0;i<n;i++) for(j=i+1;j<n;j++) if(!strcmp(words[i],words[j])) words[j][0]='\0';
+    for(i=0;i<n;i++) if(words[i][0]) printf("%s ",words[i]);
+    return 0;
+}
+```
 # Output:
+<img width="464" height="55" alt="image" src="https://github.com/user-attachments/assets/059f954c-a8e7-4e39-bf6f-8e36b28c2d76" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
